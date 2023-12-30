@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <style>
+      .message {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body ng-controller="AppController">
+    <div class="container">
+      <h1>Lunch Checker</h1>
+
+      <div class="form-group">
+        <input
+          id="lunch-menu"
+          type="text"
+          placeholder="list comma separated dishes you usually have for lunch"
+          class="form-control"
+          ng-model="launch"
+        />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" ng-click="checkLaunchItems()">
+          Check If Too Much
+        </button>
+      </div>
+      <div
+        class="form-group message"
+        ng-class="{'border p-2': true,'text-danger border-danger': message.type == 'error', 'text-success border-success': message.type == 'success'}"
+        ng-if="message.type"
+      >
+        <h1>{{message.content}}</h1>
+      </div>
+    </div>
+    <script src="libs/angular.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
