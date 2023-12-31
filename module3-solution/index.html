@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <title>Narrow Down Your Menu Choice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="libs/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="service/api.service.js"></script>
+  </head>
+  <body ng-controller="RestaurantMenuItemController as resItemCtrl">
+    <div class="container">
+      <h1>Narrow Down Your Chinese Menu Choice</h1>
+
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="search term"
+          class="form-control"
+          ng-model="resItemCtrl.search"
+        />
+      </div>
+      <div class="form-group narrow-button">
+        <button class="btn btn-primary" ng-click="resItemCtrl.getItems()">
+          Narrow It Down For Me!
+        </button>
+      </div>
+      <loading-indicator ng-if="resItemCtrl.loading"></loading-indicator>
+      <div class="row" ng-show="!resItemCtrl.loading">
+        <found-items
+          found="resItemCtrl.menuItems"
+          on-remove="resItemCtrl.removeItem(item)"
+        ></found-items>
+      </div>
+      <div ng-if="resItemCtrl.message.trim() != ''">
+        <p class="text-danger">{{resItemCtrl.message}}</p>
+      </div>
+    </div>
+  </body>
+</html>
