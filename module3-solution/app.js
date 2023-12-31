@@ -31,6 +31,7 @@
             items.loading = false
 
             items.getItems = function () {
+                items.menuItems = [];
                 items.loading = true;
                 if (items.search.trim() === "") {
                     items.menuItems = [];
