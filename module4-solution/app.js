@@ -20,7 +20,7 @@
                 }
               })
               .state('categories.items', {
-                url: '/items/{id}',
+                // url: '/items/{id}',
                 templateUrl: 'directives/item.directive.html',
                 controller: 'ItemController as itemCtrl',
                 params: {
