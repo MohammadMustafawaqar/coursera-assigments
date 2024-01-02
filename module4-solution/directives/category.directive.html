@@ -1,13 +1,18 @@
 <div>
   <ul>
-    <h1>{{catCtrl.title}}</h1>
-    <div class="row">
+    <div class="row mt-5">
       <div class="col-md-3">
-        <li ng-repeat="category in catCtrl.categories">
-          <a ui-sref="categories.items({id: {{$index}}})"
-            >{{category.category.name}}</a
+        <div class="position-fixed">
+          <h1>{{catCtrl.title}}</h1>
+          <li
+            ng-repeat="category in catCtrl.categories"
+            style="list-style: none"
           >
-        </li>
+            <a ui-sref="categories.items({id: {{$index}}})"
+              >{{category.category.name}}</a
+            >
+          </li>
+        </div>
       </div>
       <div class="col-md-8">
         <ui-view></ui-view>
